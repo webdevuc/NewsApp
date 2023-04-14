@@ -1,17 +1,15 @@
-import React, { useEffect } from 'react'
-import Sidebar from './Components/Sidebar'
-import { useDispatch } from 'react-redux';
-import {getHeadLines} from './actions/headLineAction'
+import React, { useEffect } from "react";
+import Sidebar from "./Components/Sidebar";
+import { useDispatch } from "react-redux";
+import { getHeadLines } from "./actions/headLineAction";
+import NewsCard from "./Components/NewsCard";
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getHeadLines());
-  }, []);
   return (
     <div>
-      <Sidebar/>
+      <Sidebar />
+      <NewsCard />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

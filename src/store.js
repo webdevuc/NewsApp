@@ -7,9 +7,7 @@ const reducer = combineReducers({
   headLines: headLineReducer,
 });
 
-let initialState = {
-
-};
+let initialState = {};
 
 const middleware = [thunk];
 

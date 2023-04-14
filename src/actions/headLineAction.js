@@ -20,7 +20,7 @@ export const getHeadLines = () => async (dispatch) => {
 
     dispatch({
       type: TOP_HEADLINE_SUCCESS,
-      payload: data.products,
+      payload: data,
     });
   } catch (error) {
     dispatch({
