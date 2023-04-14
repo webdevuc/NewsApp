@@ -1,21 +1,21 @@
 import axios from "axios";
 
 import {
-  // PRODUCT_DETAILS_REQUEST,
-  // PRODUCT_DETAILS_FAIL,
-  // PRODUCT_DETAILS_SUCCESS,
   TOP_HEADLINE_REQUEST,
   TOP_HEADLINE_SUCCESS,
   TOP_HEADLINE_FAIL,
-  CLEAR_ERRORS,
+  SEARCH_TEXT,
+  COUNTRY_LIST,
+  URL,
+  API_URL,
 } from "../constants/constants";
 
-export const getHeadLines = () => async (dispatch) => {
+export const getHeadLines = (code) => async (dispatch) => {
+  let seletedCode = code ? code : "us";
   try {
     dispatch({ type: TOP_HEADLINE_REQUEST });
-
     const { data } = await axios.get(
-      `https://newsapi.org/v2/top-headlines?country=us&apiKey=fcd0e80204e94043b81f10e3db685e9f`
+      `${API_URL}?apiKey=fcd0e80204e94043b81f10e3db685e9f&country=${seletedCode}`
     );
 
     dispatch({
@@ -30,24 +30,15 @@ export const getHeadLines = () => async (dispatch) => {
   }
 };
 
-// export const getProductDetails = (id) => async (dispatch) => {
-//   try {
-//     dispatch({ type: PRODUCT_DETAILS_REQUEST });
-
-//     const { data } = await axios.get(`/api/v1/product/${id}`);
-
-//     dispatch({
-//       type: PRODUCT_DETAILS_SUCCESS,
-//       payload: data.product,
-//     });
-//   } catch (error) {
-//     dispatch({
-//       type: PRODUCT_DETAILS_FAIL,
-//       payload: error.response.data.message,
-//     });
-//   }
-// };
-// Clearing Errors
-// export const clearErrors = () => async (dispatch) => {
-//   dispatch({ type: CLEAR_ERRORS });
-// };
+export const searchText = (data) => async (dispatch) => {
+  dispatch({
+    type: SEARCH_TEXT,
+    payload: data,
+  });
+};
+export const countryCode = (data) => async (dispatch) => {
+  dispatch({
+    type: COUNTRY_LIST,
+    payload: data,
+  });
+};

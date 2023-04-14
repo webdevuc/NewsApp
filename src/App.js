@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Sidebar from "./Components/Sidebar";
-import { useDispatch } from "react-redux";
-import { getHeadLines } from "./actions/headLineAction";
 import NewsCard from "./Components/NewsCard";
 function App() {
+  console.log("process.env.COUNTRY_API_KEY", process.env.COUNTRY_API_KEY);
   return (
     <div>
       <Sidebar />

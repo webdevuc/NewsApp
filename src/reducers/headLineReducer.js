@@ -10,6 +10,11 @@ import {
   TOP_HEADLINE_REQUEST,
   TOP_HEADLINE_SUCCESS,
   TOP_HEADLINE_FAIL,
+  SEARCH_TEXT,
+  COUNTRY_LIST,
+  COUNTRY_NEWS_REQUEST,
+  COUNTRY_NEWS_SUCCESS,
+  COUNTRY_NEWS_FAIL,
 } from "../constants/constants";
 
 // export const newProductReducer = (state = { product: {} }, action) => {
@@ -56,7 +61,7 @@ export const headLineReducer = (state = { headLines: [] }, action) => {
     case TOP_HEADLINE_SUCCESS:
       return {
         loading: false,
-        product: action.payload,
+        article: action.payload,
       };
     case TOP_HEADLINE_FAIL:
       return {
@@ -69,6 +74,27 @@ export const headLineReducer = (state = { headLines: [] }, action) => {
     //     ...state,
     //     error: null,
     //   };
+    default:
+      return state;
+  }
+};
+
+export const searchReducer = (state = { searchQuery: "" }, action) => {
+  switch (action.type) {
+    case SEARCH_TEXT:
+      return {
+        searchQuery: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+export const countryReducer = (state = { country: null }, action) => {
+  switch (action.type) {
+    case COUNTRY_LIST:
+      return {
+        country: action.payload,
+      };
     default:
       return state;
   }
